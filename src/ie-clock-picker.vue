@@ -6,7 +6,8 @@
     />
     <clock-modal
         :isShown="isShownClockModal"
-        @closeCLockModal="hideClockModal"
+        @close="hideClockModal"
+        @save="hideClockModal"
     />
   </div>
 </template>
@@ -15,9 +16,10 @@
 
 import TimeInput from "@/parts/timeInput";
 import ClockModal from "@/parts/clockModal";
+
 export default /*#__PURE__*/{
   name: 'IeClockPicker',
-  components: {ClockModal, TimeInput },
+  components: {ClockModal, TimeInput},
 
   data() {
     return {
@@ -25,24 +27,30 @@ export default /*#__PURE__*/{
     }
   },
 
-  computed: {
-
-  },
+  computed: {},
   methods: {
-    showClockModal(){
+    showClockModal() {
       this.isShownClockModal = true;
     },
-    hideClockModal(){
+    hideClockModal() {
       this.isShownClockModal = false;
     }
   },
 };
 </script>
 
-
-
 <style scoped>
-  .ie-clock-picker p {
-    margin: 0 0 1em;
-  }
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto"),
+  url(./fonts/Roboto-Regular.ttf) format("truetype");
+}
+
+* {
+  font-family: Roboto;
+}
+
+.ie-clock-picker p {
+  margin: 0 0 1em;
+}
 </style>
