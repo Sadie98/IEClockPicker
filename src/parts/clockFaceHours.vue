@@ -4,6 +4,7 @@
       v-for="hourCoordinates in hoursCoordinates"
       class="iec-clock-hour"
       :style="{ top: hourCoordinates.top, left: hourCoordinates.left }"
+      @click="$emit('selected', hourCoordinates.val )"
     >
       {{ hourCoordinates.val }}
     </div>
@@ -20,9 +21,6 @@ export default {
       hoursCoordinates: hoursCoordinates,
     }
   },
-  mounted() {
-    console.log(hoursCoordinates);
-  }
 }
 </script>
 
@@ -38,8 +36,13 @@ export default {
   width: 25px;
   height: 25px;
   border-radius: 12px;
-  background-color: bisque;
+  color: #3D4044;
   text-align: center;
   line-height: 25px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.iec-clock-hour:hover {
+  background-color: #EDE6FE;
 }
 </style>

@@ -2,8 +2,11 @@
   <div class="iec-clock-modal" v-if="isShown">
     <div class="iec-clock-modal--overlay">
       <div class="iec-clock-modal--window">
-        <div class="iec-clock-modal--result"> 11:20 </div>
-        <clock-face-hours/>
+        <div class="iec-clock-modal--result">
+          <p>{{ addLeadingZero(hours) }}</p>:<p>{{ addLeadingZero(minutes) }}</p>
+        </div>
+        <clock-face-hours v-if="isHoursSelecting" @selected="selectHours"/>
+        <clock-face-minutes v-else @elected="selectMinutes"/>
         <div class="iec-clock-modal--buttons">
           <div class="iec-clock-modal--button" @click="$emit('close')">CANCEL</div>
           <div class="iec-clock-modal--button" @click="$emit('save')">SAVE</div>
@@ -15,11 +18,31 @@
 
 <script>
 import ClockFaceHours from "@/parts/clockFaceHours";
+import ClockFaceMinutes from "@/parts/clockFaceMinutes";
 export default {
   name: "clockModal",
-  components: {ClockFaceHours},
+  components: {ClockFaceMinutes, ClockFaceHours},
   props: {
     isShown: Boolean,
+  },
+  data() {
+    return {
+      hours: 0,
+      minutes: 0,
+      isHoursSelecting: true,
+    }
+  },
+  methods: {
+    selectHours(val){
+      this.hours = val;
+      this.isHoursSelecting = false;
+    },
+    selectMinutes(val){
+      this.minutes = val;
+    },
+    addLeadingZero(num){
+      return ('0' + num.toString()).slice(-2);
+    }
   }
 }
 </script>
@@ -74,5 +97,8 @@ export default {
 }
 .iec-clock-modal--button:hover{
   color: #5c48d6
+}
+p {
+  display: contents;
 }
 </style>

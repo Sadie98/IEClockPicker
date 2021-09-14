@@ -17,7 +17,7 @@
 import TimeInput from "@/parts/timeInput";
 import ClockModal from "@/parts/clockModal";
 
-export default /*#__PURE__*/{
+export default {
   name: 'IeClockPicker',
   components: {ClockModal, TimeInput},
 
