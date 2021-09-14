@@ -3,10 +3,11 @@
     <div class="iec-clock-modal--overlay">
       <div class="iec-clock-modal--window">
         <div class="iec-clock-modal--result">
-          <p>{{ addLeadingZero(hours) }}</p>:<p>{{ addLeadingZero(minutes) }}</p>
+          <p @click="goToHoursSelect">{{ addLeadingZero(hours) }}:</p>
+          <p @click="goToMinutesSelect">{{ addLeadingZero(minutes) }}</p>
         </div>
         <clock-face-hours v-if="isHoursSelecting" @selected="selectHours"/>
-        <clock-face-minutes v-else @elected="selectMinutes"/>
+        <clock-face-minutes v-else @selected="selectMinutes"/>
         <div class="iec-clock-modal--buttons">
           <div class="iec-clock-modal--button" @click="$emit('close')">CANCEL</div>
           <div class="iec-clock-modal--button" @click="$emit('save')">SAVE</div>
@@ -39,6 +40,12 @@ export default {
     },
     selectMinutes(val){
       this.minutes = val;
+    },
+    goToHoursSelect(){
+      this.isHoursSelecting = true;
+    },
+    goToMinutesSelect(){
+      this.isHoursSelecting = false;
     },
     addLeadingZero(num){
       return ('0' + num.toString()).slice(-2);
@@ -100,5 +107,7 @@ export default {
 }
 p {
   display: contents;
+  user-select: none;
+  cursor: pointer;
 }
 </style>
