@@ -1,7 +1,7 @@
 <template>
   <div class="ie-clock-picker">
     <time-input
-        placeholder="Enter the name"
+        :placeholder="placeholder"
         @showClockModal="showClockModal"
     />
     <clock-modal
@@ -20,6 +20,10 @@ import ClockModal from "@/parts/clockModal";
 export default {
   name: 'IeClockPicker',
   components: {ClockModal, TimeInput},
+
+  props: {
+    placeholder: String,
+  },
 
   data() {
     return {

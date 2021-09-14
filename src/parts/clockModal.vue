@@ -10,7 +10,7 @@
         <clock-face-minutes v-else @selected="selectMinutes"/>
         <div class="iec-clock-modal--buttons">
           <div class="iec-clock-modal--button" @click="$emit('close')">CANCEL</div>
-          <div class="iec-clock-modal--button" @click="$emit('save')">SAVE</div>
+          <div class="iec-clock-modal--button" @click="$emit('save', { minutes, hours })">SAVE</div>
         </div>
       </div>
     </div>
