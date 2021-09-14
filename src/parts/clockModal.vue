@@ -10,7 +10,7 @@
         <clock-face-minutes v-else @selected="selectMinutes"/>
         <div class="iec-clock-modal--buttons">
           <div class="iec-clock-modal--button" @click="$emit('close')">CANCEL</div>
-          <div class="iec-clock-modal--button" @click="$emit('save', { minutes, hours })">SAVE</div>
+          <div class="iec-clock-modal--button" @click="save">SAVE</div>
         </div>
       </div>
     </div>
@@ -25,12 +25,18 @@ export default {
   components: {ClockFaceMinutes, ClockFaceHours},
   props: {
     isShown: Boolean,
+    value: String,
   },
   data() {
     return {
       hours: 0,
       minutes: 0,
       isHoursSelecting: true,
+    }
+  },
+  created() {
+    if (this.value) {
+      [this.hours, this.minutes] = this.value.split(':');
     }
   },
   methods: {
@@ -49,6 +55,10 @@ export default {
     },
     addLeadingZero(num){
       return ('0' + num.toString()).slice(-2);
+    },
+    save(){
+      const timeVal = this.addLeadingZero(this.hours) + ':' + this.addLeadingZero(this.minutes);
+      this.$emit('save', timeVal);
     }
   }
 }

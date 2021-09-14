@@ -30,7 +30,7 @@ export default {
   width: 100%;
 }
 .iec-input {
-  width: 150px;
+  width: 270px;
   height: 35px;
   background: #efefef;
   color: #808081;

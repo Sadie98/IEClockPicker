@@ -3,11 +3,13 @@
     <time-input
         :placeholder="placeholder"
         @showClockModal="showClockModal"
+        :value="valueLocal"
     />
     <clock-modal
         :isShown="isShownClockModal"
         @close="hideClockModal"
-        @save="hideClockModal"
+        @save="save"
+        :value="valueLocal"
     />
   </div>
 </template>
@@ -23,21 +25,31 @@ export default {
 
   props: {
     placeholder: String,
+    value: String,
   },
 
   data() {
     return {
       isShownClockModal: false,
+      valueLocal: String,
     }
   },
 
-  computed: {},
+  created() {
+    this.valueLocal = this.value ? this.value : '00:00';
+  },
+
   methods: {
     showClockModal() {
       this.isShownClockModal = true;
     },
     hideClockModal() {
       this.isShownClockModal = false;
+    },
+    save(val){
+      this.valueLocal = val;
+      this.hideClockModal();
+      this.$emit('save', val);
     }
   },
 };

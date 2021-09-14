@@ -1,6 +1,6 @@
 {
   "name": "ie-clock-picker",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/ie-clock-picker.ssr.js",
   "browser": "dist/ie-clock-picker.esm.js",
