@@ -44,5 +44,6 @@ export default {
 }
 .iec-clock-hour:hover {
   background-color: #EDE6FE;
+  color: white;
 }
 </style>

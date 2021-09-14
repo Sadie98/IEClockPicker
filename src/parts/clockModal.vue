@@ -106,8 +106,9 @@ export default {
   color: #5c48d6
 }
 p {
-  display: contents;
+  display: inline;
   user-select: none;
   cursor: pointer;
+  margin: 0;
 }
 </style>
