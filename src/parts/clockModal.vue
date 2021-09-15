@@ -7,7 +7,7 @@
         <p @click="goToMinutesSelect">{{ addLeadingZero(minutes) }}</p>
       </div>
       <clock-face-hours v-if="isHoursSelecting" @selected="selectHours"/>
-      <clock-face-minutes v-else @selected="selectMinutes"/>
+      <clock-face-minutes v-else @selected="selectMinutes" @minuteHovered="minuteHovered"/>
       <div class="iec-clock-modal--buttons">
         <div class="iec-clock-modal--button" @click="$emit('close')">CANCEL</div>
         <div class="iec-clock-modal--button" @click="save">SAVE</div>
@@ -58,6 +58,9 @@ export default {
     save(){
       const timeVal = this.addLeadingZero(this.hours) + ':' + this.addLeadingZero(this.minutes);
       this.$emit('save', timeVal);
+    },
+    minuteHovered(val){
+      this.minutes = val;
     }
   }
 }

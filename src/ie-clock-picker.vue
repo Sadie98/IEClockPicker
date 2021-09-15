@@ -49,7 +49,6 @@ export default {
     save(val){
       this.valueLocal = val;
       this.hideClockModal();
-      console.log('save')
       this.$emit('save', val);
     }
   },

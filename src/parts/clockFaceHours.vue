@@ -1,5 +1,5 @@
 <template>
-  <div class="iec-clock-hours" >
+  <div class="iec-clock-hours" ref="hoursSquare">
     <div
       v-for="hourCoordinates in hoursCoordinates"
       class="iec-clock-hour"
@@ -8,6 +8,7 @@
     >
       {{ hourCoordinates.val }}
     </div>
+    <div class="iec-clock-hours_center"/>
   </div>
 </template>
 
@@ -45,5 +46,14 @@ export default {
 .iec-clock-hour:hover {
   background-color: #EDE6FE;
   color: white;
+}
+.iec-clock-hours_center {
+  width: 4px;
+  height: 4px;
+  background-color: #604CDF;
+  border-radius: 2px;
+  top: calc(50% - 2px);
+  left: calc(50% - 2px);
+  position: relative;
 }
 </style>
