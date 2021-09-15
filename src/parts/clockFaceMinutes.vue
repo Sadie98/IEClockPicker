@@ -5,7 +5,7 @@
         class="iec-clock-minute"
         :class="{'iec-clock-minute--tiny': minuteCoordinates.val === ''}"
         :style="{ top: minuteCoordinates.top, left: minuteCoordinates.left }"
-        @click="$emit('selected', minuteCoordinates.val )"
+        @click="minuteCoordinates.val.length && $emit('selected', minuteCoordinates.val )"
     >
       {{ minuteCoordinates.val }}
     </div>
@@ -47,6 +47,7 @@ export default {
   width: 5px;
   height: 5px;
   background-color: #EDE6FE;
+  cursor: initial;
 }
 .iec-clock-minute:hover {
   background-color: #EDE6FE;

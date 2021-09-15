@@ -30,13 +30,13 @@ export default {
   width: 100%;
 }
 .iec-input {
-  width: 270px;
+  width: 260px;
   height: 35px;
-  background: #efefef;
-  color: #808081;
+  background: #d9dee3;
+  color: #3d4044;
   border: 1px solid #ffffff;
   border-radius: 4px;
-  padding: 0 5px;
+  padding: 0 10px;
   font-size: 15px;
   transition: 0.5s;
 }
