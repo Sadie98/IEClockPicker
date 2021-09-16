@@ -36,7 +36,7 @@ export default {
   },
 
   watch: {
-    value: () => {
+    value: function() {
       this.valueLocal = this.value;
     }
   },
