@@ -31,12 +31,14 @@ export default {
   data() {
     return {
       isShownClockModal: false,
-      valueLocal: String,
+      valueLocal: '',
     }
   },
 
-  created() {
-    this.valueLocal = this.value ? this.value : '00:00';
+  watch: {
+    value: () => {
+      this.valueLocal = this.value;
+    }
   },
 
   methods: {
